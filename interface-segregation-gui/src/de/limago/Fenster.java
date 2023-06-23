@@ -1,7 +1,6 @@
 package de.limago;
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
 
 
 public class Fenster extends Frame {
@@ -13,7 +12,7 @@ public class Fenster extends Frame {
 
         Button button = new Button("Drück mich");
 
-        new WindowAdapter(){};
+
         add(button);
 
 
