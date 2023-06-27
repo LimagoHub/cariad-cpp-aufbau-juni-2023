@@ -16,7 +16,11 @@ class Schwein {
     }
 
 public:
-    explicit Schwein(const std::string &name = "Nobody") :  gewicht{10} {
+
+    static const inline std::string default_name{"Nobody"};
+    static const inline int initial_weight{10};
+
+    explicit Schwein(const std::string &name = default_name) :  gewicht{initial_weight} {
         setName(name);
     }
 
@@ -54,3 +58,5 @@ public:
         return os;
     }
 };
+
+
