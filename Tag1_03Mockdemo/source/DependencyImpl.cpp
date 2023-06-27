@@ -9,7 +9,7 @@ void DependencyImpl::foo(std::string message) const {
     std::cout << message << std::endl;
 }
 
-int DependencyImpl::bar() const {
+int DependencyImpl::bar()  const {
     return 42;
 }
 

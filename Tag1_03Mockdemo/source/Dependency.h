@@ -9,7 +9,7 @@
 
 class Dependency {
 public:
-    virtual void foo(std::string message) const = 0;
+    virtual void foo(std::string message)  const = 0;
     virtual int bar() const = 0;
     virtual int foobar(std::string message) const = 0;
 
