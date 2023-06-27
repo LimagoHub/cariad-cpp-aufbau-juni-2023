@@ -22,6 +22,6 @@ TEST_F(myservice_using_dependency_test, FirstMethod) {
 	EXPECT_CALL(dMock, get_firstname()).WillOnce(::testing::Return("Fritz"));
 
 	EXPECT_EQ(object_under_test.first_method_under_test(), "Fritz Hallo");
-	EXPECT_TRUE(true);
+
 }
 

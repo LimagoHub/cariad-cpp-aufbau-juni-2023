@@ -14,7 +14,7 @@ set(SOURCE
 	myservice_using_dependency_test.cpp
 	myservice_using_dependency_test.h
 
-	)
+		globaltest.h globaltest.cpp)
 
 
 
