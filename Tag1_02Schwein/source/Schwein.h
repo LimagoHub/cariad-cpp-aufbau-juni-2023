@@ -11,7 +11,7 @@ class Schwein {
     std::string name;
     int gewicht;
 
-    void setGewicht(int gewicht) {
+    inline void setGewicht(int gewicht) {
         Schwein::gewicht = gewicht;
     }
 

@@ -7,13 +7,15 @@
 
 #include "Dependency.h"
 
-class DemoDepenency: public Dependency {
+class DemoDepenency: public Dependency /* hoechstens auf able enden */{
 public:
+
     void foo(std::string message) const override {
 
     }
 
     int bar() const override {
+
         return 0;
     }
 
