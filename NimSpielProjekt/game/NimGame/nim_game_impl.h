@@ -10,9 +10,10 @@
 
 class nim_game_impl : public game{
    int stones;
+   int turn;
 
 public:
-    nim_game_impl():stones(23), game_over(false) {}
+    nim_game_impl():stones(23){}
     void play() override {
         while(! is_game_over()) {
             execute_round();
@@ -25,7 +26,7 @@ private:
     }
 
     void spieler_zug() {
-        int turn;
+        if(is_game_over()) return ;
 
         while(true) {
             std::cout << "Es gibt " << stones << " Steine. Bitte nehmen Sie 1, 2 oder 3." << std::endl;
@@ -34,25 +35,35 @@ private:
             std::cout << "Ungültiger Zug" << std::endl;
         }
 
-        stones -= turn;
-    }
-    void computer_zug() {
-        const  int turns [] = {3,1,1,2};
-        int turn;
+        terminate_turn("Spieler");
 
-        if(stones < 1) {
-            std::cout << " Du loser" << std::endl;
-            return;
-        }
-        if(stones == 1) {
-            std::cout << " Du hast nur Glueck gehabt" << std::endl;
-            return;
-        }
+    }
+
+
+
+    void computer_zug() {
+
+        if(is_game_over()) return ;
+
+        const  int turns [] = {3,1,1,2};
 
         turn = turns[stones %4];
         std::cout << "Computer nimmt " << turn << " Steine." << std::endl;
-        stones -= turn;
+        terminate_turn("Computer");
     }
+
+    void terminate_turn(std::string player) {
+        updateBoard();
+        print_game_over_message_if_game_is_over(player);
+    }
+
+    void print_game_over_message_if_game_is_over(const std::string &player) {
+        if(is_game_over())
+            std::cout << player << " hat verloren"  << std::endl;
+    }
+
+    // Im Sumpf
+    void updateBoard() { stones -= turn; }
 
     bool is_game_over() {
         return stones < 1;
