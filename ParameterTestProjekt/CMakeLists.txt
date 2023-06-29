@@ -13,7 +13,7 @@ set(PROJ_CONFIG $<CONFIG>)
 add_executable(
 	ParameterTestProjekt 
 	source/main.cpp
-        source/games/take_game/players/computer_player.h source/games/take_game/io/Writer.h)
+        source/games/take_game/players/computer_player.h source/games/take_game/io/Writer.h ../../../vw/vw-tdd-oktober-2022/TakeGameProject/tests/Mockplayer.h ../../../vw/vw-tdd-oktober-2022/TakeGameProject/tests/Mockplayer.h)
 
 
 # Add tests
