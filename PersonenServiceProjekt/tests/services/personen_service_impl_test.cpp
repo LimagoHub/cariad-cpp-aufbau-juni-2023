@@ -4,6 +4,18 @@
 
 #include "personen_service_impl_test.h"
 
+TEST_P(personen_service_impl_parameter_test, speichern__fehler_im_namen__throws_personen_service_exception){
+    try {
+        // Arrange
+
+
+        // Act
+        objectUnderTest.speichern(invalidPerson);
+        FAIL() << "Exception erwartet";
+    } catch (const personen_service_exception & ex) {
+        EXPECT_THAT(ex.what(), StrEq(expectedErrorMessage.c_str()));
+    }
+}
 
 TEST_F(personen_service_impl_test, speichern__vorname_zu_kurz__throws_personen_service_exception){
     try {
@@ -116,3 +128,15 @@ TEST_F(personen_service_impl_test, speichern_overloaded__HappyDay__person_passed
 void personen_service_impl_test::SetUp() {
     ON_CALL(blacklistMock,is_blacklisted(_)).WillByDefault(Return(false));
 }
+
+INSTANTIATE_TEST_SUITE_P(
+        speichern_invalid_names, // Name der Testa frei waehlbar
+        personen_service_impl_parameter_test, // Verbindung zur Testklasse
+        Values(
+
+                std::make_pair(person{"","Doe"},"Vorname zu kurz" ),
+                std::make_pair(person{"J","Doe"},"Vorname zu kurz" ),
+                std::make_pair(person{"John",""},"Nachname zu kurz" ),
+                std::make_pair(person{"John","D"},"Nachname zu kurz" )
+        )
+);
